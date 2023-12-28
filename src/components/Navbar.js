@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 function Navbar() {
   const products = useSelector(state => state.cart)
-
+  // console.log(products);
   return (
     <div className="w-full bg-blue-800 py-2 ">
       <div className="w-9/12 mx-auto flex justify-between">
