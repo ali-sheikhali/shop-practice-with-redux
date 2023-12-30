@@ -1,12 +1,13 @@
 import React from 'react'
 import ShowShop from '../ShowShop'
-import Navbar from '../Navbar'
+import Footer from '../Footer'
 
 function Home() {
   return (
     <div>
      
         <ShowShop />
+        <Footer />
     </div>
   )
 }

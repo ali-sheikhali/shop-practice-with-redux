@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeCart } from "../../store/cartSlice";
 import SumCart from "../SumCart";
+import Footer from "../Footer";
 function Cart() {
   // const products = useSelector(state => state.Cart)
   const products = useSelector((state) => state.cart);
@@ -41,6 +42,7 @@ function Cart() {
     </div>
   );
   return (
+    <div>
     <div className="flex mx-auto">
       <div className="w-8/12" 
       >{productCart}</div>
@@ -48,6 +50,9 @@ function Cart() {
       <div className="w-4/12 mt-6 p-5">
         <SumCart />
       </div>
+      
+    </div>
+    <Footer />
     </div>
   );
 }
