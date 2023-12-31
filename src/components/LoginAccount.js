@@ -4,9 +4,10 @@ function LoginAccount({ showLogin }) {
 
   return (
     <div>
-      <div className="w-10/12 md:w-5/12 mx-auto border rounded-md py-5 mt-10">
-        <form className="flex flex-col space-y-5 ">
-          <h1 className="font-bold text-2xl text-center">SIGN IN</h1>
+      <div className="w-10/12 md:w-5/12 mx-auto border rounded-md py-5 mt-10 h-[350px]">
+      <h1 className="font-bold text-2xl text-center">SIGN IN</h1>
+        <form className="flex flex-col mt-16 space-y-10 ">
+    
           <div className="flex justify-around">
             <input
               type="text"
@@ -33,19 +34,19 @@ function LoginAccount({ showLogin }) {
             Login
           </button>
         </form>
-        <div className="mt-10 w-11/12 mx-auto relative">
+        {/* <div className="mt-10 w-11/12 mx-auto relative">
           <hr />
           <span className="absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             Other
           </span>
-        </div>
+        </div> */}
 
-        <p className="text-center mt-5">
+        {/* <p className="text-center mt-5">
           have not you already account?{" "}
           <span className="font-bold cursor-pointer" >
             sign in
           </span>
-        </p>
+        </p> */}
       </div>
     </div>
   );

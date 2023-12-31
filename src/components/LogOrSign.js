@@ -64,12 +64,12 @@ function LogOrSign() {
             <FaXTwitter />
           </span>
         </div>
-        <p className="text-center mt-5">
+        {/* <p className="text-center mt-5">
           have you already account?{" "}
-          <span className="font-bold cursor-pointer" onClick={loginHandle}>
+          <span className="font-bold cursor-pointer">
             Login
           </span>
-        </p>
+        </p> */}
       </div>
     </div>
   );
