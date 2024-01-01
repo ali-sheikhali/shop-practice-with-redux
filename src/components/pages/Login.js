@@ -12,9 +12,9 @@ function Login() {
   return (
     <div>
       {showLogin ? <LoginAccount /> : <LogOrSign />}
-      <button className="w-10/12 md:w-5/12 mx-auto ml-[443px]  border rounded-md my-5" onClick={toggleLogin}>
+      <button className="w-10/12 md:w-5/12 ml-11 md:ml-[443px]  border rounded-md my-5  " onClick={toggleLogin}>
         {showLogin ? (
-          <p className="text-center  my-5">
+          <p className="text-center my-5">
             have not you already account?{" "}
             <span className="font-bold cursor-pointer">sign in</span>
           
@@ -26,7 +26,7 @@ function Login() {
           </p>
         )}
       </button>
-      {/* <br /><br /><br /><br /><br /><br /> */}
+     
       <Footer />
     </div>
   );

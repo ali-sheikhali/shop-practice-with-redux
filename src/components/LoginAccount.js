@@ -1,52 +1,112 @@
-import React from "react";
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { FaRegEye } from "react-icons/fa";
 
-function LoginAccount({ showLogin }) {
-
+function LoginAccount() {
+  const [showPass, setShowPass] = useState(false);
+  const showPassHandle = () => {
+    setShowPass(!showPass);
+  };
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values));
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(15, "you must be 15 character")
+        .required("required"),
+      lastName: Yup.string()
+        .max(20, "you must be 20 character")
+        .required("required"),
+      email: Yup.string().required("required"),
+      password: Yup.string()
+        .max(12, "max 12 character")
+        .min(8, "min 8 character")
+        .required("required"),
+    }),
+  });
   return (
     <div>
-      <div className="w-10/12 md:w-5/12 mx-auto border rounded-md py-5 mt-10 h-[350px]">
-      <h1 className="font-bold text-2xl text-center">SIGN IN</h1>
-        <form className="flex flex-col mt-16 space-y-10 ">
-    
-          <div className="flex justify-around">
-            <input
-              type="text"
-              className="border rounded-md focus:outline-none p-1"
-              placeholder="Enter Your Name..."
-            />
-            <input
-              type="text"
-              className="border rounded-md focus:outline-none p-1"
-              placeholder="Enter Your Family..."
-            />
+      <div className="w-10/12 md:w-5/12 mx-auto border rounded-md py-5 mt-10 h-[350px] ">
+      <h1 className="font-bold text-2xl text-center">LOGIN</h1>
+      <form
+          onSubmit={formik.handleSubmit}
+          className="w-10/12 mx-auto flex flex-col space-y-4"
+        >
+          <div className="flex flex-col">
+            <div>
+              <label htmlFor="firstName">Name: </label>
+              <input
+                className="border rounded-md w-full focus:outline-none px-3 py-1"
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formik.values.firstName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </div>
+            <div className="text-[12px] ml-3 text-red-500">
+              {formik.touched.firstName && formik.errors.firstName ? (
+                <div>{formik.errors.firstName}</div>
+              ) : null}
+            </div>
           </div>
-          <div className="w-6/12 mx-auto flex flex-col space-y-5">
-            <input
-              type="password"
-              className="border rounded-md focus:outline-none p-1 w-full"
-              placeholder="Enter Your password..."
-            />
+          <div className="flex flex-col">
+            <div>
+              <label htmlFor="lastName">lastName: </label>
+              <input
+                className="border rounded-md w-full focus:outline-none px-3 py-1"
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </div>
+            <div className="text-[12px] ml-3 text-red-500">
+              {formik.touched.lastName && formik.errors.lastName ? (
+                <div>{formik.errors.lastName}</div>
+              ) : null}
+            </div>
           </div>
-          <button
-            type="submit"
-            className="bg-green-500 w-8/12 mx-auto rounded-md text-white py-1"
-          >
-            Login
-          </button>
-        </form>
-        {/* <div className="mt-10 w-11/12 mx-auto relative">
-          <hr />
-          <span className="absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            Other
-          </span>
-        </div> */}
-
-        {/* <p className="text-center mt-5">
-          have not you already account?{" "}
-          <span className="font-bold cursor-pointer" >
-            sign in
-          </span>
-        </p> */}
+         
+          <div className="flex flex-col ">
+            <div className="relative">
+              <label htmlFor="password">password: </label>
+              <input
+                className="border rounded-md w-full focus:outline-none px-3 py-1"
+                type={showPass ? "text" : "password"}
+                id="password"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              <span
+                className="absolute cursor-pointer top-8 right-8"
+                onClick={showPassHandle}
+              >
+                <FaRegEye />
+              </span>
+            </div>
+            <div className="text-[12px] ml-3 text-red-500">
+              {formik.touched.password && formik.errors.password ? (
+                <div>{formik.errors.password}</div>
+              ) : null}
+            </div>
+          </div>
+          <button className="bg-green-500 text-white rounded-md w-6/12 mx-auto" type="submit">submit</button>
+        </form> 
+        
       </div>
     </div>
   );
