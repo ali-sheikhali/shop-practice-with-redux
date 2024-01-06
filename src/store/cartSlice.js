@@ -18,8 +18,15 @@ const carSlice = createSlice({
       state.find((product) => product.id === action.payload).count += 1;
       return state;
     },
+    minesToCart(state, action) {
+    const item= state.find((product) => product.id === action.payload);
+      if(item.count>1){
+        item.count -= 1
+      } 
+    },
   },
 });
 
-export const { addToCart, removeCart, plusToCart } = carSlice.actions;
+export const { addToCart, removeCart, plusToCart, minesToCart } =
+  carSlice.actions;
 export default carSlice.reducer;

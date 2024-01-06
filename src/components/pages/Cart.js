@@ -1,20 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { removeCart, plusToCart } from "../../store/cartSlice";
+import { removeCart, plusToCart, minesToCart } from "../../store/cartSlice";
 import SumCart from "../SumCart";
 import Footer from "../Footer";
 
 function Cart() {
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(products);
 
   const removeHandle = (id) => {
     dispatch(removeCart(id));
   };
   const plusHandle = (id) => {
-    dispatch(plusToCart(id))
+    dispatch(plusToCart(id));
+  };
+  const minesHandle = (id) => {
+    dispatch(minesToCart(id));
   };
   const productCart = (
     <div className="grid md:grid-cols-4 w-7/12 md:w-10/12 mx-auto gap-3 my-10">
@@ -32,16 +34,19 @@ function Cart() {
               <p className="bg-gray-200">price: ${item.price} </p>
             </div>
             <div className="border w-6/12 mx-auto flex justify-around">
-              <button className="border w-full">-</button>
-              
-              <span className="border w-full">
+              <button
+                onClick={() => minesHandle(item.id)}
+                className="border w-full"
+              >
+                -
+              </button>
+
+              <span className="border flex justify-center w-full">
                 {item.count}
-                
               </span>
               <button
-
-                className="border w-full"
-                onClick={()=> plusHandle(item.id)}
+                className="border flex justify-center w-full"
+                onClick={() => plusHandle(item.id)}
               >
                 +
               </button>
