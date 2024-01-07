@@ -5,7 +5,6 @@ import Footer from '../Footer'
 function Home() {
   return (
     <div>
-     
         <ShowShop />
         <Footer />
     </div>

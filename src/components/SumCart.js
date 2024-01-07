@@ -5,7 +5,8 @@ function SumCart() {
   const productCart = useSelector((state) => state.cart);
 
   const sumCart = productCart.reduce((acc, item) => {
-    return acc + item.price;
+      const total = item.price * item.count
+    return acc + total;
   }, 0);
 
   return (
