@@ -1,19 +1,27 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { MdLogin } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { FaChevronDown } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 function Navbar() {
   const products = useSelector((state) => state.cart);
+  const [chevron, setChevron] = useState(false)
+  const handleClick = ()=>{
+    setChevron(!chevron)
+  }
   return (
     <div className="w-full bg-blue-800 py-2 ">
       <div className="w-9/12 mx-auto flex justify-between">
         <div className="flex flex-col relative w-24">
           <Menu>
-            <Menu.Button className="text-white mt-2">More Details</Menu.Button>
+            <Menu.Button className="text-white mt-2 flex w-32" onClick={handleClick}>More Details 
+            {chevron ? <FaChevronUp className="mt-1 ml-2 "/> :   <FaChevronDown className="mt-1 ml-2" /> }
+         
+            </Menu.Button>
             <Transition
               className="absolute top-9 bg-blue-500 z-10 px-2 rounded-md  text-black"
               enter="transition ease-out duration-100"
@@ -29,7 +37,7 @@ function Navbar() {
                     <Link
                       to="/best-products"
                       className={`${
-                        active ? "bg-blue-500 text-white" : "text-black"
+                        active ? "bg-blue-500 text-white rounded-md" : "text-black"
                       } block px-4 py-2 text-sm`}
                     >
                       Best Products
@@ -40,9 +48,9 @@ function Navbar() {
                   {({ active }) => (
                     <Link
                       to="/best-products"
-                      // className={`${
-                      //   active ? "bg-blue-500 text-white" : "text-black"
-                      // } block px-4 py-2 text-sm`}
+                      className={`${
+                        active ? "bg-blue-500 rounded-md text-white" : "text-black"
+                      } block px-4 py-2 text-sm`}
                     >
                       Best Products
                     </Link>
