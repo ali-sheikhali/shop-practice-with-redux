@@ -9,6 +9,7 @@ function ShowShop() {
   const dispatch = useDispatch();
 
   const addToCartHandle = (item) => {
+    
     dispatch(addToCart(item));
   };
 

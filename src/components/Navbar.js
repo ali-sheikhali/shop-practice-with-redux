@@ -9,6 +9,7 @@ import { FaChevronUp } from "react-icons/fa";
 
 function Navbar() {
   const products = useSelector((state) => state.cart);
+
   const [chevron, setChevron] = useState(false)
   const handleClick = ()=>{
     setChevron(!chevron)
@@ -18,12 +19,12 @@ function Navbar() {
       <div className="w-9/12 mx-auto flex justify-between">
         <div className="flex flex-col relative w-24">
           <Menu>
-            <Menu.Button className="text-white mt-2 flex w-32" onClick={handleClick}>More Details 
+            <Menu.Button className=" mt-2 flex justify-center w-32 bg-white text-black rounded-md py-1" onClick={handleClick}>More Details 
             {chevron ? <FaChevronUp className="mt-1 ml-2 "/> :   <FaChevronDown className="mt-1 ml-2" /> }
          
             </Menu.Button>
             <Transition
-              className="absolute top-9 bg-blue-500 z-10 px-2 rounded-md  text-black"
+              className="absolute top-12 bg-blue-500 z-10 px-2 rounded-md text-black"
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
               enterTo="transform opacity-100 scale-100"

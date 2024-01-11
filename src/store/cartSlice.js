@@ -8,6 +8,7 @@ const carSlice = createSlice({
     addToCart(state, action) {
       console.log(action.payload);
       state.push({ ...action.payload, count: 1 });
+
     },
     removeCart(state, action) {
       console.log(action.payload);
